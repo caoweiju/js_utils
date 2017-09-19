@@ -1,0 +1,23 @@
+{
+  "name": "js_utils",
+  "version": "1.0.0",
+  "description": "javascript utils about date/query/cookie/...",
+  "main": "index.commonjs.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caoweiju/js_utils.git"
+  },
+  "keywords": [
+    "javascript",
+    "utils"
+  ],
+  "author": "caoweiju",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caoweiju/js_utils/issues"
+  },
+  "homepage": "https://github.com/caoweiju/js_utils#readme"
+}
