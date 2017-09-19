@@ -1,0 +1,52 @@
+{
+    //字体
+    "editor.fontSize": 14, 
+    //搜索查找时不要查找编译后的dev、ver文件夹
+    "search.exclude": {
+    "**/node_modules": true,
+    "**/dev/scripts": true,
+    "**/ver/scripts": true,
+    "**/dev/styles": true,
+    "**/ver/styles": true
+  },
+  "files.associations": {
+    "*.mustache": "html",
+    "*.vm": "html",
+    "*.esx": "javascript",
+    "*.js": "jsx"
+  },
+  "window.zoomLevel": 1,
+  "codedox": {
+    "autoInsert": true, // enables insertion of function comments trigged by keystrokes
+    "autoInsertHeader": true, // enables insertion of file header triggered by keystrokes
+    "autoPrefixOnEnter": true, // enables 'on enter' rules
+    "paramFormat": "@param ${name} - ", // supports ${name} and ${type}, plus built-in params
+    "returnFormat": "@return ${type}", // supports ${type}, plus built-in params
+    "allowOptionalArgs": false, // false strips the '?' prefix from optional function args
+    "alwaysMultiline": true, // if false non-functions (types) are single line
+    "commentprefix": "*  ",
+    "commentbegin": "/**",
+    "commentend": "*/",
+    "commentdescription": "[Description]",
+    "headerprefix": " *",
+    "headerbegin": "/*",
+    "headerend": " */",
+    "fileheader": {
+      "params": {
+        "*": {
+          "company": "My Company",
+          "author": "Wiggin"
+        }
+      },
+      "templates": {
+        "*": [
+          "${headerbegin}",
+          "${headerprefix} Copyright (c) ${year} ${company}",
+          "${headerprefix}",
+          "${headerprefix} Author: ${author}",
+          "${headerend}"
+        ]
+      }
+    }
+  }
+}
