@@ -19,10 +19,14 @@ JavaScript的一些工具函数的封装
 最后都封在了一个对象中，最好统一下名字，这里直接叫做 utilsFn ，
 1. url的search参数相关的处理函数封装
     * searchToObject 可以把url的？后面的参数转换为对象，方便使用，
+    ````
     //测试url： http://cn.bing.com/search?q=test&pq=test
     var search = utilsFn.searchToObject(location.search);
     //结果为类似 search = {q : 'test' , pq : 'test'}
+    ````
     * objectToSearch 可以把一个对象变成一串字符串，通过特殊的连接符，默认是 & 
+    ````
     //测试对象 objectTest = {q: 'test', pq : 'test',test : 'nothing'}
     var search = utilsFn.objectToSearch(objectTest, &);
     //结果为类似 search = 'q=test&pq=test&test=nothing'
+    ````
