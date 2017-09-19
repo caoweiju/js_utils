@@ -61,8 +61,7 @@
          * @return {string} {合并成希望的格式的字符串}
          */
         objectToSearch : function (param, splitKey){
-            if(!(Object.prototype.toString(param) === "[object Object]" || 
-                    Object.prototype.toString(param) === "[object Array]")){
+            if(!(Object.prototype.toString(param) === "[object Object]")){
                         console.error('error: wrong type of param, need object');
                         return null;
             }
