@@ -1,25 +1,22 @@
 /**
 * @function {function searchToObject}
-* @param  {type} param {location.href之类的参数}
-* @param  {type} data  {需要把search追加到一个已存在的data对象里面}
-* @return {type} {返回含有search的参数的对象，search的参数名为键值，参数值为键值}
+* @param  {string} param {location.href之类的参数}
+* @param  {object} data  {需要把search追加到一个已存在的data对象里面}
+* @return {object} {返回含有search的参数的对象，search的参数名为键值，参数值为键值}
 */
-function searchToObject(param, data) {
+function searchToObject(param, data = {}) {
     if(Object.prototype.toString(val) !== "[object String]"){
         console.error('error: wrong type of param, need string');
         return null;
     }
-    var reg = /([^\?|\&]\w+)=([^\?|\&]+)/ig;
-    var v = {};
-    if (!!data) {
+    let reg = /([^\?|\&]\w+)=([^\?|\&]+)/ig,
         v = data;
-    }
     if (param) {
         if (param.charAt(0) == "?") {
             param = param.substr(1);
         }
         while (true) {
-            var r = reg.exec(param);
+            let r = reg.exec(param);
             if (r) {
                 v[r[1]] = decodeURIComponent(r[2]);
             } else {
@@ -35,16 +32,15 @@ function searchToObject(param, data) {
 * @param  {string} splitKey {分隔符，默认是&}
 * @return {string} {合并成希望的格式的字符串}
 */
-function objectToSearch(param, splitKey){
+function objectToSearch(param = {}, splitKey = '&'){
     if(!(Object.prototype.toString(param) === "[object Object]" || 
             Object.prototype.toString(param) === "[object Array]")){
                 console.error('error: wrong type of param, need object');
                 return null;
     }
-    var arr = [],
-        param = param || {},
-        splitKey = splitKey || "&";
-    for (var i in param) {
+    let arr = [],
+        param = param;
+    for (let i in param) {
         if(i && param.hasOwnProperty(i)){
             if(Object.prototype.toString(val) === "[object Object]" || 
                 Object.prototype.toString(val) === "[object Array]"){
@@ -56,6 +52,7 @@ function objectToSearch(param, splitKey){
     }
     return arr.join(splitKey);
 }
+
 export {
     searchToObject,
     objectToSearch

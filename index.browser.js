@@ -24,11 +24,11 @@
     //封装的全局工具函数
     window.utilsFn = {
         /**
-         * @function {function searchToObject}
-         * @param  {type} param {location.href之类的参数}
-         * @param  {type} data  {需要把search追加到一个已存在的data对象里面}
-         * @return {type} {返回含有search的参数的对象，search的参数名为键值，参数值为键值}
-         */
+        * @function {function searchToObject}
+        * @param  {string} param {location.href之类的参数}
+        * @param  {object} data  {需要把search追加到一个已存在的data对象里面}
+        * @return {object} {返回含有search的参数的对象，search的参数名为键值，参数值为键值}
+        */
         searchToObject : function (param, data) {
             if(Object.prototype.toString(val) !== "[object String]"){
                 console.error('error: wrong type of param, need string');
