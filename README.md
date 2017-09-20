@@ -1,5 +1,5 @@
 # js_utils
-JavaScript的一些工具函数的封装
+JavaScript的一些常用工具函数的封装
 工程结构如下：
 1. commonjs_utils  这是符合commonjs规范的源码，主要是 exports require
     * 里面每个文件夹对应不同部分的工具函数【包括了日期、query参数等】
@@ -29,4 +29,26 @@ JavaScript的一些工具函数的封装
     //测试对象 objectTest = {q: 'test', pq : 'test',test : 'nothing'}
     var search = utilsFn.objectToSearch(objectTest, &);
     //结果为类似 search = 'q=test&pq=test&test=nothing'
+    ````
+2. number数字的一些方法的封装
+    * isInteger 判断是否是整数，
+    ````
+        * @function isInteger 判定data是否是整数
+        * @param  {number} data {需要判定的}
+        * @return {boolean} {返回布尔值}
+    //测试数字 var n = 2, a = 2.1;
+    utilsFn.isInteger(n)  //true
+    utilsFn.isInteger(a)  // false
+    ````
+    * randomInteger 返回一个随机整数
+    ````
+        /**
+         * @function randomInteger 产生随机整数
+         * @param  {number} min    {最小值}
+         * @param  {number} max    {最大值}
+         * @param  {boolean} max_in {是否包含最大值，true 是，flase 否}
+         * @return {number} {符合要求的随机数}
+         */
+        utilsFn.randomInteger(1,100)  // 54 随机数
+        utilsFn.randomInteger(1,100,true)  // 可能会有100
     ````

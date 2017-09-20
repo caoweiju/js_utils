@@ -28,7 +28,7 @@ function searchToObject(param, data) {
         }
     }
     return v;
-},
+}
 /**
 * @function objectToSearch
 * @param  {object} param {js对象，需要}
