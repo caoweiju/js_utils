@@ -12,14 +12,14 @@
      * @return {boolean} {value是否和传进来的type对应，对应返回true，否则返回false}
      */
     checkType : function (value, type){
-        if(Object.prototype.toString(type) !== "[object String]"){
+        if(Object.prototype.toString.call(type) !== "[object String]"){
                 console.error('error: wrong type of param, need string');
                 return false;
             }
         type = type.replace(/^(\w)/,function(v){
             return v.toUpperCase();
         });
-        return Object.prototype.toString(val) === "[object " + type + "]";
+        return Object.prototype.toString.call(val) === "[object " + type + "]";
     }
     //封装的全局工具函数
     window.utilsFn = {
@@ -30,7 +30,7 @@
         * @return {object} {返回含有search的参数的对象，search的参数名为键值，参数值为键值}
         */
         searchToObject : function (param, data) {
-            if(Object.prototype.toString(val) !== "[object String]"){
+            if(Object.prototype.toString.call(param) !== "[object String]"){
                 console.error('error: wrong type of param, need string');
                 return null;
             }
@@ -61,7 +61,7 @@
          * @return {string} {合并成希望的格式的字符串}
          */
         objectToSearch : function (param, splitKey){
-            if(!(Object.prototype.toString(param) === "[object Object]")){
+            if(!(Object.prototype.toString.call(param) === "[object Object]")){
                         console.error('error: wrong type of param, need object');
                         return null;
             }
@@ -70,8 +70,8 @@
                 splitKey = splitKey || "&";
             for (var i in param) {
                 if(i && param.hasOwnProperty(i)){
-                    if(Object.prototype.toString(val) === "[object Object]" || 
-                        Object.prototype.toString(val) === "[object Array]"){
+                    if(Object.prototype.toString.call(val) === "[object Object]" || 
+                        Object.prototype.toString.call(val) === "[object Array]"){
                         arr.push(i + "=" + encodeURIComponent(JSON.stringify(val)));
                     }else{
                         arr.push(i + "=" + encodeURIComponent(val));
@@ -137,7 +137,7 @@
             } else if (!interval) {
                 interval = 250;
             }
-            return function() {
+            return function () {
                 var self = this,
                     args = arguments,
                     now = Date.now();
@@ -150,11 +150,24 @@
                     previousTime = now;
                 } else {
                     clearTimeout(timer);
-                    timer = setTimeout(function() {
+                    timer = setTimeout(function () {
                         fn.bind(self, args);
                     }, wait);
                 }
             };
+        },
+        /**
+         * @function trim
+         * @param  {string} str {需要请求两端空格的字符串}
+         * @return {string} {清除两端空格的字符串结果}
+         */
+        trim : function (str){
+            if (!String.prototype.trim) {
+                String.prototype.trim = function () {
+                    return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+                };
+            }
+            return str.trim();
         }
     }
 })();

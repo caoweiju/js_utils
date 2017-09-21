@@ -5,7 +5,7 @@
 * @return {object} {返回含有search的参数的对象，search的参数名为键值，参数值为键值}
 */
 function searchToObject(param, data = {}) {
-    if(Object.prototype.toString(val) !== "[object String]"){
+    if(Object.prototype.toString.call(val) !== "[object String]"){
         console.error('error: wrong type of param, need string');
         return null;
     }
@@ -33,8 +33,8 @@ function searchToObject(param, data = {}) {
 * @return {string} {合并成希望的格式的字符串}
 */
 function objectToSearch(param = {}, splitKey = '&'){
-    if(!(Object.prototype.toString(param) === "[object Object]" || 
-            Object.prototype.toString(param) === "[object Array]")){
+    if(!(Object.prototype.toString.call(param) === "[object Object]" || 
+            Object.prototype.toString.call(param) === "[object Array]")){
                 console.error('error: wrong type of param, need object');
                 return null;
     }
@@ -42,8 +42,8 @@ function objectToSearch(param = {}, splitKey = '&'){
         param = param;
     for (let i in param) {
         if(i && param.hasOwnProperty(i)){
-            if(Object.prototype.toString(val) === "[object Object]" || 
-                Object.prototype.toString(val) === "[object Array]"){
+            if(Object.prototype.toString.call(val) === "[object Object]" || 
+                Object.prototype.toString.call(val) === "[object Array]"){
                 arr.push(i + "=" + encodeURIComponent(JSON.stringify(val)));
             }else{
                 arr.push(i + "=" + encodeURIComponent(val));
