@@ -52,3 +52,19 @@ JavaScript的一些常用工具函数的封装
         utilsFn.randomInteger(1,100)  // 54 随机数
         utilsFn.randomInteger(1,100,true)  // 可能会有100
     ````
+3. Navigator.userAgent的处理，判断移动端和pc端，判断ios、Android
+    * browser 方法，返回browser对象
+    ````
+        /**
+        * @function browser
+        * @return {object} {browser对象返回关于访问的浏览器属性，}
+        * isMobile: true, // true表示移动端 false表示PC端
+        * isIos: true, //true表示是ios系统 false表示不是 【ios是指apple的移动端系统】
+        * isAndroid: false, //true表示移动端 false表示PC端 【安卓移动端系统】
+        * 如果需要进行版本控制，需要version的话，参考 https://segmentfault.com/a/1190000011316167
+        */
+        var sniff = utilsFn.browser();
+        sniff.isMobile // true
+        sniff.isIos // false
+        sniff.isAndroid // true
+    ````

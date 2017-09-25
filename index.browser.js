@@ -168,6 +168,23 @@
                 };
             }
             return str.trim();
+        },
+        /**
+         * @function browser
+         * @return {object} {browser对象返回关于访问的浏览器属性，}
+         * isMobile: true, // true表示移动端 false表示PC端
+         * isIos: true, //true表示是ios系统 false表示不是 【ios是指apple的移动端系统】
+         * isAndroid: false, //true表示移动端 false表示PC端 【安卓移动端系统】
+         * 如果需要进行版本控制，需要version的话，参考 https://segmentfault.com/a/1190000011316167
+         */
+        browser : function (){
+            var browser = {},
+                ua = navigator.userAgent,
+		        platform = navigator.platform;
+            browser.isIos = /iPhone|iPod|iPad/.test(ua);
+            browser.isAndroid = /Android/.test(ua);
+            browser.isMobile = /Mac|Win|linux/.test(platform) && !browser.isAndroid;
+            return browser;
         }
     }
 })();

@@ -56,7 +56,7 @@ function objectToSearch(param, splitKey){
     }
     return arr.join(splitKey);
 }
-modules.exports = {
+module.exports = {
     searchToObject : searchToObject,
     objectToSearch : objectToSearch
 }
